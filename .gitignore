@@ -1,0 +1,48 @@
+# Python and virtual environment files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+*.egg-info/
+dist/
+*.egg
+*.log
+*.pot
+*.pyc
+db.sqlite3
+*.swp
+*.swo
+
+# Virtual environment directory
+venv/
+venv.bak/
+
+# Django specific
+*.log
+*.pot
+*.pyc
+media/
+
+# IDE-specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Other files and directories
+*.bak
+*.cache
+*.coverage
+*.env
+*.gz
+*.sqlite
+*.tmp
+*.zip
+node_modules/
+staticfiles/
+static/
