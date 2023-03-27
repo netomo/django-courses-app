@@ -6,7 +6,7 @@ from rest_framework.decorators import action, permission_classes
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 
-from .models import Course, CourseInstance, Enrollment
+from .models import Course, CourseInstance, Enrollment, EduProfile
 from .serializers import (
     UserSerializer,
     LoginSerializer,
@@ -42,7 +42,7 @@ class RegisterViewSet(viewsets.ModelViewSet):
                     email=serializer.validated_data["email"],
                     password=serializer.validated_data["password"],
                 )
-                user.profile = UserModel.objects.create(
+                user.profile = EduProfile.objects.create(
                     user=user, **serializer.validated_data["profile"]
                 )
                 user.save()
@@ -68,6 +68,7 @@ class RegisterViewSet(viewsets.ModelViewSet):
 
 class LoginViewSet(viewsets.ViewSet):
     serializer_class = LoginSerializer
+    permission_classes = [permissions.AllowAny]
 
     def create(self, request):
         username = request.data.get("username")

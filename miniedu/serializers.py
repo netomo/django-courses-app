@@ -13,11 +13,11 @@ class EduProfileSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    profile = EduProfileSerializer()
+    edu_profile = EduProfileSerializer()
 
     class Meta:
         model = get_user_model()
-        fields = ["username", "email", "password", "profile"]
+        fields = ["username", "email", "password", "edu_profile"]
         extra_kwargs = {"password": {"write_only": True, "min_length": 8}}
 
 
@@ -33,7 +33,7 @@ class CourseScheduleSerializer(serializers.ModelSerializer):
 
 
 class CourseInstanceSerializer(serializers.ModelSerializer):
-    schedule = CourseScheduleSerializer(many=True)
+    schedules = CourseScheduleSerializer(many=True)
 
     class Meta:
         model = CourseInstance
@@ -43,7 +43,7 @@ class CourseInstanceSerializer(serializers.ModelSerializer):
             "teacher",
             "start_date",
             "end_date",
-            "schedule",
+            "schedules",
             "capacity",
             "is_active",
         )
